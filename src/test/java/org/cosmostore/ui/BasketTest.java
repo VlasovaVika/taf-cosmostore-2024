@@ -1,4 +1,4 @@
-package org.cosmostore;
+package org.cosmostore.ui;
 
 import org.junit.jupiter.api.Test;
 

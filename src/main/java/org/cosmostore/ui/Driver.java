@@ -1,4 +1,4 @@
-package org.cosmostore;
+package org.cosmostore.ui;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;

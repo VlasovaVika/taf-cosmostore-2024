@@ -1,9 +1,8 @@
-package org.cosmostore;
+package org.cosmostore.ui;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 
 public class BaseTest {
     WebDriver driver;
