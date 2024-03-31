@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 
-public class OpenSite extends BaseTest{
+public class OpenSiteTest extends BaseTest{
     @Test
     public void openPageTest(){
         String actual = driver.findElement(By.xpath(OpenPage.COPYRIGHT)).getText();

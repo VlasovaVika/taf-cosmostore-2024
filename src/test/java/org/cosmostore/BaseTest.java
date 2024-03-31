@@ -6,14 +6,14 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 public class BaseTest {
-    WebDriver driver  = new ChromeDriver();
+    WebDriver driver;
     @BeforeEach
-    public void startTest(){
-        driver.manage().window().maximize();
-        driver.navigate().to(OpenPage.URL);
+    public void warmUp(){
+        driver = Driver.getDriver();
+        driver.navigate().to("https://www.cosmostore.org/");
     }
     @AfterEach
-    public void finishTest(){
-        driver.quit();
+    public void tearDown(){
+        Driver.quitDriver();
     }
 }
