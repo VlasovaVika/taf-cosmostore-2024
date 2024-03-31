@@ -2,12 +2,12 @@ package org.cosmostore;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.By;
 
 public class OpenSiteTest extends BaseTest{
     @Test
     public void openPageTest(){
-        String actual = driver.findElement(By.xpath(OpenPage.COPYRIGHT)).getText();
-        Assertions.assertEquals("Copyright © 2011-2024 Cosmostore.org. All rights reserved.", actual);
+        OpenPage openPage = new OpenPage();
+        String expected = "Copyright © 2011-2024 Cosmostore.org. All rights reserved.";
+        Assertions.assertEquals(expected, openPage.getCopyrightText());
     }
 }
