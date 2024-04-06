@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 
 public class BasketTest extends BaseTest {
     @Test
-    public void addingItemsToBasket(){
+    public void testAddItemsToBasket(){
         BasketPage basketPage = new BasketPage();
         String expectedNameOfProduct = basketPage.getExpectedNameOfProduct();
         basketPage.clickFirstItemFromTop40();
