@@ -36,10 +36,10 @@ public class LoginTest extends BaseTest {
     }
     @Test
     @DisplayName("test with not verified data")
-    public void testLogin4() {
+    public void testLogin4() throws InterruptedException {
         LoginPage loginPage = new LoginPage();
         loginPage.clickBtnLogInToCabinet();
-        loginPage.enterEmail("testvvvv@gmail.com");
+        loginPage.enterEmail("testvv8v@gmail.com");
         loginPage.enterPassword("mmll");
         loginPage.clickBtnSignIn();
         Assertions.assertEquals("Invalid login information. Try to recover the password.", loginPage.getErrorMessageForInvalidData());
