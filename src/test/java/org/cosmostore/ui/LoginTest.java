@@ -20,10 +20,11 @@ public class LoginTest extends BaseTest {
     public void testLogin2() {
         LoginPage loginPage = new LoginPage();
         loginPage.clickBtnLogInToCabinet();
-        loginPage.enterEmail("test11@gmail.com");
+        loginPage.enterEmail(UsersGenerator.generateEmailAndPasswordForUser().getEmail());
         loginPage.enterPassword(" ");
         loginPage.clickBtnSignIn();
-        Assertions.assertEquals("Invalid login information. Try to recover the password.", loginPage.getErrorMessageForPassword());
+        Assertions.assertEquals("Invalid login information. Try to recover the password.",
+                loginPage.getErrorMessageForPassword());
     }
     @Test
     @DisplayName("test with wrong email")
