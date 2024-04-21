@@ -8,7 +8,7 @@ import static org.hamcrest.Matchers.*;
 
 public class SearchAPITest {
     @Test
-    @DisplayName("search 'shampoo'")
+    @DisplayName("POST search 'shampoo'")
     public void testSearch1(){
         given().
                 queryParam("q", "shampoo").
@@ -18,7 +18,7 @@ public class SearchAPITest {
                 statusCode(200).body(containsString("shampoo"));
     }
     @Test
-    @DisplayName("search 'Azzaro%20Coffret'")
+    @DisplayName("POST search 'Azzaro%20Coffret'")
     public void testSearch2(){
         given().
                 queryParam("q", "Azzaro%20Coffret").

@@ -7,7 +7,7 @@ import static io.restassured.RestAssured.given;
 
 public class OpenSiteAPITest {
     @Test
-    @DisplayName("check status 200 when we open main page")
+    @DisplayName("GET check status 200 when we open main page")
     public void testGetCosmostore(){
         given().
         when().
