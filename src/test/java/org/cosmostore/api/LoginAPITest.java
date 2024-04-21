@@ -9,7 +9,7 @@ import static org.hamcrest.Matchers.equalTo;
 
 public class LoginAPITest {
     @Test
-    @DisplayName("with empty email and password")
+    @DisplayName("POST with empty email and password")
     public void testLogin1() {
         given().
                 queryParam("location", "https%3A%2F%2Fwww.cosmostore.org%2F").
@@ -24,7 +24,7 @@ public class LoginAPITest {
     }
 
     @Test
-    @DisplayName("user with this email is not registered")
+    @DisplayName("POST with this email is not registered")
     public void testLogin2() {
         given().
                 queryParam("location", "https%3A%2F%2Fwww.cosmostore.org%2F").
@@ -40,7 +40,7 @@ public class LoginAPITest {
                         "Try to recover the password.\"}}"));
     }
     @Test
-    @DisplayName("user with empty email")
+    @DisplayName("POST with empty email")
     public void testLogin3() {
         given().
                 queryParam("location", "https%3A%2F%2Fwww.cosmostore.org%2F").
@@ -54,7 +54,7 @@ public class LoginAPITest {
                 body(equalTo("{\"status\":\"error\",\"errors\":{\"email\":\"Required field Email\"}}"));
     }
     @Test
-    @DisplayName("user with empty password")
+    @DisplayName("POST with empty password")
     public void testLogin4() {
         given().
                 queryParam("location", "https%3A%2F%2Fwww.cosmostore.org%2F").
@@ -67,7 +67,7 @@ public class LoginAPITest {
                 body(equalTo("{\"status\":\"error\",\"errors\":{\"password\":\"Invalid login information. Try to recover the password.\"}}"));
     }
     @Test
-    @DisplayName("user with incorrect email")
+    @DisplayName("POST with incorrect email")
     public void testLogin5() {
         given().
                 queryParam("location", "https%3A%2F%2Fwww.cosmostore.org%2F").
@@ -80,6 +80,4 @@ public class LoginAPITest {
                 statusCode(200).
                 body(equalTo("{\"status\":\"error\",\"errors\":{\"email\":\"This is not the email\"}}"));
     }
-
 }
-
