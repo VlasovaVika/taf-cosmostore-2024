@@ -10,7 +10,7 @@ import static org.hamcrest.Matchers.equalTo;
 public class LoginAPITest {
     @Test
     @DisplayName("with empty email and password")
-    public void testLogin() {
+    public void testLogin1() {
         given().
                 queryParam("location", "https%3A%2F%2Fwww.cosmostore.org%2F").
                 body("email=&password=+&submit_login=true").
