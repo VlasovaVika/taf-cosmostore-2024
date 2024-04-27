@@ -10,7 +10,7 @@ public class LoginTest extends BaseTest {
     public void testLogin1() {
         LoginPage loginPage = new LoginPage();
         loginPage.clickBtnLogInToCabinet();
-        loginPage.enterEmail(" ");
+        loginPage.enterEmail(LoginPage.EMPTY_FIELD);
         loginPage.enterPassword(UsersGenerator.generateEmailAndPasswordForUser().getPassword());
         loginPage.clickBtnSignIn();
         Assertions.assertEquals("Required field Email", loginPage.getErrorMessageForEmail());
@@ -21,7 +21,7 @@ public class LoginTest extends BaseTest {
         LoginPage loginPage = new LoginPage();
         loginPage.clickBtnLogInToCabinet();
         loginPage.enterEmail(UsersGenerator.generateEmailAndPasswordForUser().getEmail());
-        loginPage.enterPassword(" ");
+        loginPage.enterPassword(LoginPage.EMPTY_FIELD);
         loginPage.clickBtnSignIn();
         Assertions.assertEquals("Invalid login information. Try to recover the password.",
                 loginPage.getErrorMessageForPassword());
@@ -31,7 +31,7 @@ public class LoginTest extends BaseTest {
     public void testLogin3() {
         LoginPage loginPage = new LoginPage();
         loginPage.clickBtnLogInToCabinet();
-        loginPage.enterEmail("11111hhi");
+        loginPage.enterEmail(LoginPage.INCORRECT_EMAIL);
         loginPage.enterPassword(UsersGenerator.generateEmailAndPasswordForUser().getPassword());
         loginPage.clickBtnSignIn();
         Assertions.assertEquals("This is not the email", loginPage.getErrorMessageForEmail());

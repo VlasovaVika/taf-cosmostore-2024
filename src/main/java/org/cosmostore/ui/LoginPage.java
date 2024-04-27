@@ -1,6 +1,7 @@
 package org.cosmostore.ui;
 
 import org.cosmostore.driver.Driver;
+import org.cosmostore.user.UsersGenerator;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -18,6 +19,8 @@ public class LoginPage {
     public static final String ERROR_MESSAGE_FOR_PASSWORD = "//div[@class='form-group'][2]/small";
     public static final String BTN_SIGN_IN = "//button[@class='btn btn-primary btn-block btn-shadow login_submit']";
     public static final String ERROR_MESSAGE_FOR_INVALID_DATA = "//div[@class='modal-body tab-content py-4']/form/div[@class='message_block alert alert-danger mb-3']";
+    public static final String EMPTY_FIELD = " ";
+    public static final String INCORRECT_EMAIL = UsersGenerator.generateEmailAndPasswordForUser().getPassword();
     public void clickBtnLogInToCabinet() {
         driver.findElement(By.xpath(LoginPage.BTN_LOGIN_TO_CABINET)).click();
     }
