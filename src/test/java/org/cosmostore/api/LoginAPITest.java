@@ -12,11 +12,10 @@ public class LoginAPITest {
     @DisplayName("POST with empty email and password")
     public void testLogin1() {
         given().
-                queryParam("location", "https%3A%2F%2Fwww.cosmostore.org%2F").
-                body("email=&password=+&submit_login=true").
-                contentType("application/x-www-form-urlencoded; charset=UTF-8").
+                headers(LoginAPIPage.getHeaders()).
+                body(LoginAPIPage.getBody(LoginAPIPage.EMPTY_FIELD,LoginAPIPage.EMPTY_FIELD)).
                 when().
-                post("https://www.cosmostore.org/users/login/?location=https%3A%2F%2Fwww.cosmostore.org%2F").
+                post(LoginAPIPage.URL_FOR_LOGIN).
                 then().assertThat().
                 statusCode(200).
                 body(equalTo("{\"status\":\"error\",\"errors\":{\"email\":\"Required field Email\"," +
@@ -27,13 +26,11 @@ public class LoginAPITest {
     @DisplayName("POST with this email is not registered")
     public void testLogin2() {
         given().
-                queryParam("location", "https%3A%2F%2Fwww.cosmostore.org%2F").
-                body("email=" + UsersGenerator.generateEmailAndPasswordForUser().getEmail() +
-                        "&password="+ UsersGenerator.generateEmailAndPasswordForUser().getPassword()+
-                        "+&submit_login=true").
-                contentType("application/x-www-form-urlencoded; charset=UTF-8").
+                headers(LoginAPIPage.getHeaders()).
+                body(LoginAPIPage.getBody(UsersGenerator.generateEmailAndPasswordForUser().getEmail(),
+                        UsersGenerator.generateEmailAndPasswordForUser().getPassword())).
                 when().
-                post("https://www.cosmostore.org/users/login/?location=https%3A%2F%2Fwww.cosmostore.org%2F").
+                post(LoginAPIPage.URL_FOR_LOGIN).
                 then().assertThat().
                 statusCode(200).
                 body(equalTo("{\"status\":\"error\",\"errors\":{\"message\":\"Invalid login information. " +
@@ -43,12 +40,11 @@ public class LoginAPITest {
     @DisplayName("POST with empty email")
     public void testLogin3() {
         given().
-                queryParam("location", "https%3A%2F%2Fwww.cosmostore.org%2F").
-                body("email=&password="+ UsersGenerator.generateEmailAndPasswordForUser().getPassword()+
-                        "+&submit_login=true").
-                contentType("application/x-www-form-urlencoded; charset=UTF-8").
+                headers(LoginAPIPage.getHeaders()).
+                body(LoginAPIPage.getBody(LoginAPIPage.EMPTY_FIELD,
+                        UsersGenerator.generateEmailAndPasswordForUser().getPassword())).
                 when().
-                post("https://www.cosmostore.org/users/login/?location=https%3A%2F%2Fwww.cosmostore.org%2F").
+                post(LoginAPIPage.URL_FOR_LOGIN).
                 then().assertThat().
                 statusCode(200).
                 body(equalTo("{\"status\":\"error\",\"errors\":{\"email\":\"Required field Email\"}}"));
@@ -57,11 +53,11 @@ public class LoginAPITest {
     @DisplayName("POST with empty password")
     public void testLogin4() {
         given().
-                queryParam("location", "https%3A%2F%2Fwww.cosmostore.org%2F").
-                body("email="+UsersGenerator.generateEmailAndPasswordForUser().getEmail()+"&password=&submit_login=true").
-                contentType("application/x-www-form-urlencoded; charset=UTF-8").
+                headers(LoginAPIPage.getHeaders()).
+                body(LoginAPIPage.getBody(UsersGenerator.generateEmailAndPasswordForUser().getEmail(),
+                        LoginAPIPage.EMPTY_FIELD)).
                 when().
-                post("https://www.cosmostore.org/users/login/?location=https%3A%2F%2Fwww.cosmostore.org%2F").
+                post(LoginAPIPage.URL_FOR_LOGIN).
                 then().assertThat().
                 statusCode(200).
                 body(equalTo("{\"status\":\"error\",\"errors\":{\"password\":\"Invalid login information. Try to recover the password.\"}}"));
@@ -70,12 +66,11 @@ public class LoginAPITest {
     @DisplayName("POST with incorrect email")
     public void testLogin5() {
         given().
-                queryParam("location", "https%3A%2F%2Fwww.cosmostore.org%2F").
-                body("email=mkmopk&password="+ UsersGenerator.generateEmailAndPasswordForUser().getPassword()+
-                        "+&submit_login=true").
-                contentType("application/x-www-form-urlencoded; charset=UTF-8").
+                headers(LoginAPIPage.getHeaders()).
+                body(LoginAPIPage.getBody(LoginAPIPage.INCORRECT_EMAIL,
+                        UsersGenerator.generateEmailAndPasswordForUser().getPassword())).
                 when().
-                post("https://www.cosmostore.org/users/login/?location=https%3A%2F%2Fwww.cosmostore.org%2F").
+                post(LoginAPIPage.URL_FOR_LOGIN).
                 then().assertThat().
                 statusCode(200).
                 body(equalTo("{\"status\":\"error\",\"errors\":{\"email\":\"This is not the email\"}}"));

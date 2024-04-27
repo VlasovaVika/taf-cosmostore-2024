@@ -11,7 +11,7 @@ public class OpenSiteAPITest {
     public void testGetCosmostore(){
         given().
         when().
-                get("https://www.cosmostore.org/").
+                get(OpenSiteAPIPage.URL).
         then().
                 assertThat().
                 statusCode(200);

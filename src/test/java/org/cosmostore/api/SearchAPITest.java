@@ -13,7 +13,7 @@ public class SearchAPITest {
         given().
                 queryParam("q", "shampoo").
                 when().
-                get("https://www.cosmostore.org/catalog/search").
+                get(SearcAPIPage.URL).
                 then().assertThat().
                 statusCode(200).body(containsString("shampoo"));
     }
@@ -23,7 +23,7 @@ public class SearchAPITest {
         given().
                 queryParam("q", "Azzaro%20Coffret").
                 when().
-                get("https://www.cosmostore.org/catalog/search").
+                get(SearcAPIPage.URL).
                 then().assertThat().
                 statusCode(200).body(containsString("Azzaro%20Coffret"));
     }
